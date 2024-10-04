@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Reporting System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .report-section, .sub-options-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .report-item, .sub-option-item {
+            width: 150px;
+            padding: 20px;
+            margin: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .report-item:hover, .sub-option-item:hover {
+            background-color: #e9ecef;
+            transform: scale(1.05);
+        }
+        
+
+        .report-item i, .sub-option-item i {
+            font-size: 40px;
+            color: #5DADE2;
+            margin-bottom: 15px;
+        }
+
+        .report-item p, .sub-option-item p {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+    
+
+        .selected {
+            background-color: #d4edda;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #selected-category {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        
+        #back-btn {
+            margin-top: 10px;
+            cursor: pointer;
+            color: blue;
+        }
+        
+        .sub-options-section {
+            padding: 15px 10px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+        }
+
+        .report-item, .sub-option-item {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        
+        
+
+        #location-input {
+            margin-top: 15px;
+        }
+
+        .final-selection-list {
+            list-style-type: none; /* Hides the bullet points */
+            margin-left: 0;        /* Removes any default left margin */
+            padding-left: 0;       /* Removes any default padding */
+            font-size: 1.1em;
+            
+        }
+
+        #additional-info {
+            margin-top: 20px;
+            padding: 20px 0;
+            border-top: 1px solid #ccc;
+            align-items: center;
+        }
+        
+        #additional-details {
+            width: 60%;
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            resize: vertical; /* Allows vertical resizing */
+        }
+
+        /* Style for submit button */
+        #submit-btn {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #submit-btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Waste Reporting System</h1>
+        <p>Select the waste location you'd like to report:</p>
+
+        <!-- Location ID input field -->
+        <div id="location-input" >
+            <label for="location-id">Enter Location ID:</label>
+            <input type="text" id="location-id" placeholder="A123 5678 91">
+        </div>
+
+        <!-- Main options: Trashbin, Trash-House, Trash Area -->
+        <div class="report-section" id="main-options">
+            <div class="report-item" onclick="showSubOptions('trashbin', this)">
+                <i class="fas fa-trash"></i>
+                <p>Trashbin</p>
+            </div>
+            <div class="report-item" onclick="showSubOptions('trashhouse', this)">
+                <i class="fas fa-home"></i>
+                <p>Trash-House</p>
+            </div>
+            <div class="report-item" onclick="showSubOptions('trasharea', this)">
+                <i class="fas fa-map"></i>
+                <p>Trash Area</p>
+            </div>
+        </div>
+
+        <!-- Heading for selected category -->
+        <div id="selected-category" class="hidden"></div>
+
+        <!-- Sub-options: Trashbin issues -->
+        <div class="sub-options-section hidden" id="trashbin-options">
+            <div class="sub-option-item" onclick="toggleFinalOption('Trashbin - Broken', this)">
+                <i class="fas fa-wrench"></i>
+                <p>Broken</p>
+            </div>
+            <div class="sub-option-item" onclick="toggleFinalOption('Trashbin - Full', this)">
+                <i class="fas fa-trash-alt"></i>
+                <p>Full</p>
+            </div>
+            <div class="sub-option-item" onclick="toggleFinalOption('Trashbin - Dirty', this)">
+                <i class="fas fa-broom"></i>
+                <p>Dirty</p>
+            </div>
+        </div>
+
+        <!-- Sub-options: Trash-House issues -->
+        <div class="sub-options-section hidden" id="trashhouse-options">
+            <div class="sub-option-item" onclick="toggleFinalOption('Trash-House - Door Broken', this)">
+                <i class="fas fa-door-closed"></i>
+                <p>Door Broken</p>
+            </div>
+            <div class="sub-option-item" onclick="toggleFinalOption('Trash-House - Overflowing', this)">
+                <i class="fas fa-trash"></i>
+                <p>Overflowing</p>
+            </div>
+            <div class="sub-option-item" onclick="toggleFinalOption('Trash-House - Smelly', this)">
+                <i class="fas fa-smog"></i>
+                <p>Smelly</p>
+            </div>
+            <div class="sub-option-item" onclick="toggleFinalOption('Trash-House - Dirty Floor', this)">
+                <i class="fas fa-broom"></i>
+                <p>Dirty Floor</p>
+            </div>
+        </div>
+
+        <!-- Sub-options: Trash Area issues -->
+        <div class="sub-options-section hidden" id="trasharea-options">
+            <div class="sub-option-item" onclick="toggleFinalOption('Trash Area - Unmaintained', this)">
+                <i class="fas fa-tools"></i>
+                <p>Unmaintained</p>
+            </div>
+            <div class="sub-option-item" onclick="toggleFinalOption('Trash Area - Overgrown', this)">
+                <i class="fas fa-seedling"></i>
+                <p>Overgrown</p>
+            </div>
+            <div class="sub-option-item" onclick="toggleFinalOption('Trash Area - Littered', this)">
+                <i class="fas fa-trash"></i>
+                <p>Littered</p>
+            </div>
+            <div class="sub-option-item" onclick="toggleFinalOption('Trash Area - Blocked Access', this)">
+                <i class="fas fa-road"></i>
+                <p>Blocked Access</p>
+            </div>
+        </div>
+
+        <!-- Back button -->
+        <div id="back-btn" class="hidden" onclick="goBack()">← Back to main options</div>
+
+        <!-- Final selected options as a list -->
+        <div id="final-selection" class="hidden">
+            <h2>Selected Issues:</h2>
+            <ul id="selected-option" class="final-selection-list"></ul>
+        </div>
+
+        <!-- Additional info -->
+        <div id="additional-info">
+            <label for="additional-details">Can't find your issue? Add more details:</label>
+            <br>
+            <textarea id="additional-details" rows="4" cols="50" placeholder="Describe the issue here..."></textarea>
+        </div>
+
+        <!-- Submit button -->
+        <button class="hidden" id="submit-btn" onclick="submitReport()">Submit Report</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Waste Reporting System. All Rights Reserved.</p>
+    </footer>
+
+    <script src="report.js">
+        
+    </script>
+
+</body>
+</html>
+
+
+
+
