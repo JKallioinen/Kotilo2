@@ -122,6 +122,28 @@
             resize: vertical; /* Allows vertical resizing */
         }
 
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+        }
+        
+        /* Modal Content */
+        .modal-content {
+            background-color: white;
+            margin: 10% auto; /* 15% from top and centered */
+            padding: 20px;
+            border-radius: 8px;
+            width: 30em; /* Modal width */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+        }
+
         /* Style for submit button */
         #submit-btn {
             margin-top: 20px;
@@ -147,6 +169,49 @@
             box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
         }
 
+        #goHomeBtn {
+            padding: 6px 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #goHomeBtn:hover {
+            background-color: #0056b3;
+        }
+        #goHomeBtn:active {
+            background-color: lightblue;
+        }
+
+        #goHomeBtn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+        }
+
+        #closeModalBtn {
+            padding: 6px 12px;
+            border: 1px solid darkgray;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #closeModalBtn:hover {
+            background-color: lightgray;
+        }
+        #closeModalBtn:active {
+            background-color: darkgray;
+        }
+
+        #closeModalBtn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px darkgray;
+        }
+
         footer {
             margin-top: 50px;
             text-align: center;
@@ -159,6 +224,7 @@
     <div class="container">
         <h1>Waste Reporting System</h1>
         <p>Select the waste location you'd like to report:</p>
+        
 
         <!-- Location ID input field -->
         <div id="location-input" >
@@ -166,7 +232,7 @@
             <input type="text" id="location-id" placeholder="A123 5678 91">
         </div>
 
-
+        <p>Select the issue type:</p>
 
         <!-- Main options: Trashbin, Trash-House, Trash Area -->
         <div class="report-section" id="main-options">
@@ -257,6 +323,17 @@
             <label for="additional-details">Can't find your issue? Add more details:</label>
             <br>
             <textarea id="additional-details" rows="4" cols="50" placeholder="Describe the issue here..."></textarea>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="thankYouModal" class="modal">
+            <div class="modal-content">
+                <h2>Thank You for Reporting</h2>
+                <p>Your report has been successfully submitted with the following details:</p>
+                <p id="report-details"></p>
+                <button id="goHomeBtn" class="btn">Go to Homepage</button>
+                <button id="closeModalBtn" class="btn btn-secondary">Close</button>
+            </div>
         </div>
 
         <!-- Submit button -->
