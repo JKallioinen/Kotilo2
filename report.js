@@ -95,9 +95,9 @@ function updateFinalSelectionDisplay() {
     }
 
     // Render selected options by category
-    renderCategory('Trashbin', finalSelections.Trashbins);
-    renderCategory('Trash-House', finalSelections.TrashHouse);
-    renderCategory('Trash Area', finalSelections.TrashArea);
+    renderCategory('Trashbin:', finalSelections.Trashbins);
+    renderCategory('Trash-House:', finalSelections.TrashHouse);
+    renderCategory('Trash Area:', finalSelections.TrashArea);
 
     // Show or hide the final selections and submit button
     if (finalSelections.Trashbins.length > 0 || 
@@ -111,34 +111,59 @@ function updateFinalSelectionDisplay() {
     }
 }
 
+// Function to show the modal and display the report details
+function showThankYouModal(reportDetails) {
+    const modal = document.getElementById('thankYouModal');
+    const reportDetailsElement = document.getElementById('report-details');
+    
+    // Populate the report details in the modal
+    reportDetailsElement.innerHTML = reportDetails;
+    
+    // Show the modal
+    modal.style.display = 'block';
+}
+
+// Close modal function
+function closeModal() {
+    const modal = document.getElementById('thankYouModal');
+    modal.style.display = 'none';
+}
+
+// Redirect to homepage
+function goToHomepage() {
+    window.location.href = '/'; // Replace with your homepage URL
+}
+
+// Attach event listeners
+document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+document.getElementById('goHomeBtn').addEventListener('click', goToHomepage);
+
+
 // Function to handle report submission (mockup for now)
 function submitReport() {
     const locationCode = document.getElementById('location-id').value;
     const additionalDetails = document.getElementById('additional-details').value; // Get the additional details text
 
+    
     if (!locationCode) {
         alert('Please enter a Location ID!');
         return;
     }
 
-    // Collect the issues for each category, but show only the issue text (without category prefix)
+    // Collect the issues for each category (without category prefix)
     let trashbinIssues = finalSelections.Trashbins.length > 0 ? finalSelections.Trashbins.join(', ') : 'None';
     let trashhouseIssues = finalSelections.TrashHouse.length > 0 ? finalSelections.TrashHouse.join(', ') : 'None';
     let trashareaIssues = finalSelections.TrashArea.length > 0 ? finalSelections.TrashArea.join(', ') : 'None';
 
-    // Display the report with the issues listed
-    alert('Report submitted with the following details:\n' +
-          'Location: ' + locationCode + '\n' +
-          'Trashbin issues: ' + trashbinIssues + '\n' +
-          'TrashHouse issues: ' + trashhouseIssues + '\n' +
-          'TrashArea issues: ' + trashareaIssues);
-
-    // Include additional details if provided
-    if (additionalDetails) {
-        reportMessage += '\nAdditional Details: ' + additionalDetails;
+    // Prepare the report details
+    let reportDetails = `Location: ${locationCode}<br><br> Trashbin issues: ${trashbinIssues}<br> TrashHouse issues: ${trashhouseIssues}<br> TrashArea issues: ${trashareaIssues}`;
+    
+    if (additionalDetails.trim() !== '') {
+        reportDetails += `<br><br>Additional Information: ${additionalDetails}`;
     }
 
-    alert(reportMessage);
+    // Show the thank you modal with report details
+    showThankYouModal(reportDetails);
 }
 
 // Function to hide all sections and reset the state when going back
