@@ -131,7 +131,7 @@ function closeModal() {
 
 // Redirect to homepage
 function goToHomepage() {
-    window.location.href = '/'; // Replace with your homepage URL
+    window.location.href = 'info.html'; // Replace with your homepage URL
 }
 
 // Attach event listeners
