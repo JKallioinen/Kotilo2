@@ -13,20 +13,11 @@
             display: flex;
             flex-direction: column; /* Stack vertically */
             min-height: 100vh; /* Ensure the body fills the whole screen */
-            padding-top: 70px;
         }
         header {
-            background-color: #4CAF50;
-            padding: 15px;
+            background-color: rgba(167, 188, 91, 0.8); 
+            padding: 20px;
             text-align: center;
-            color: white;
-            width: 100%;
-            position: fixed; /* Header pysyy ylhäällä vieritettäessä */
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            transition: top 0.3s; /* Sujuva siirtymä headerin katoamiselle */
-            height: 70px; /* Headerin korkeus */
         }
         nav {
             margin-top: 10px;
@@ -56,7 +47,7 @@
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-right: 20px; /* Vähän väliä kuvan ja formin väliin */
+            margin: 20px 20px 40px 20px; /* Vähän väliä kuvan ja formin väliin */
         }
 
         .image-container img {
@@ -65,12 +56,13 @@
             max-height: 300px; /* Maksimikorkeus kuvalle */
         }
         footer {
-            background-color: #4CAF50;
-            padding: 10px;
+            background-color: rgba(167, 188, 91, 0.8); /* Vaaleanvihreä väri 80% peittävyydellä */
+            padding: 20px;
             text-align: center;
-            color: white;
+            position: relative;
+            bottom: 0;
             width: 100%;
-            margin-top: auto; /* Push footer to the bottom */
+            
         }
         table {
             border-collapse: collapse;
@@ -104,7 +96,7 @@
             font-size: 16px;
         }
         #recycle-section {
-            margin: 20px auto; /* Keskittää elementin sivun keskelle */
+            margin: 40px auto; /* Keskittää elementin sivun keskelle */
             padding: 20px;
             background-color: #e9f7ef;
             border-radius: 8px;

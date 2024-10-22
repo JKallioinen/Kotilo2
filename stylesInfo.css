@@ -27,12 +27,3 @@ nav a:hover {
 .container {
     padding: 20px;
 }
-footer {
-    background-color: #4CAF50;
-    padding: 10px;
-    text-align: center;
-    color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}

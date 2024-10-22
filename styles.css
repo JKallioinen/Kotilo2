@@ -1,4 +1,6 @@
 body {
+    margin: 0;
+    padding: 0;
     color: black;
     font-family: Arial, sans-serif;
     background-color: #ffffff; /* Taustaväri, jos kuva ei lataudu */
@@ -17,9 +19,23 @@ html, body {
 
 header {
     background-color: rgba(167, 188, 91, 0.8); 
-    color: white;
     padding: 20px;
     text-align: center;
+}
+
+nav {
+    margin-top: 10px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #333;
+    border-radius: 5px;
+}
+nav a:hover {
+    background-color: #555;
 }
 
 .container {
@@ -232,7 +248,6 @@ h4 {
 
 footer {
     background-color: rgba(167, 188, 91, 0.8); /* Vaaleanvihreä väri 80% peittävyydellä */
-    color: white;
     padding: 20px;
     text-align: center;
     position: relative;
