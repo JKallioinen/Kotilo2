@@ -135,7 +135,11 @@ function goToHomepage() {
 }
 
 // Attach event listeners
-document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+document.getElementById('closeModalBtn').addEventListener('click', function() {
+    closeModal(); // Close the modal
+    location.reload(); // Refresh the page
+});
+
 document.getElementById('goHomeBtn').addEventListener('click', goToHomepage);
 
 
@@ -156,7 +160,7 @@ function submitReport() {
     let trashareaIssues = finalSelections.TrashArea.length > 0 ? finalSelections.TrashArea.join(', ') : 'None';
 
     // Prepare the report details
-    let reportDetails = `Location: ${locationCode}<br><br> Trashbin issues: ${trashbinIssues}<br> TrashHouse issues: ${trashhouseIssues}<br> TrashArea issues: ${trashareaIssues}`;
+    let reportDetails = `Location: ${locationCode}<br><br> Trashbin issues: ${trashbinIssues}<br> Trash House issues: ${trashhouseIssues}<br> Trash Area issues: ${trashareaIssues}`;
     
     if (additionalDetails.trim() !== '') {
         reportDetails += `<br><br>Additional Information: ${additionalDetails}`;

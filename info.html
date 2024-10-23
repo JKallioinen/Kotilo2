@@ -3,51 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Kotilo 2</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column; /* Stack vertically */
-            min-height: 100vh; /* Ensure the body fills the whole screen */
-        }
-        header {
-            background-color: rgba(167, 188, 91, 0.8); 
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            margin-top: 10px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            background-color: #333;
-            border-radius: 5px;
-        }
-        nav a:hover {
-            background-color: #555;
-        }
+
+        
         .form-and-image-container {
             display: flex; /* Järjestää lapset vierekkäin */
             justify-content: space-between; /* Jakaa tilan formille ja kuvalle */
-            align-items: flex-start; /* Asettaa molemmat elementit yläreunan mukaan */
+            align-items: center; /* Asettaa molemmat elementit yläreunan mukaan */
             margin: 20px auto;
-            max-width: 1200px; /* Asetetaan maksimileveys, jotta sisältö ei veny liikaa */
+            max-width: 1200px; 
+            /* Asetetaan maksimileveys, jotta sisältö ei veny liikaa */
         }
 
         .container {
+            padding: 20px;
+            background-color: #d3d3d380;
+            align-items: center;
+            width: 90%;
+            border-radius: 5px;
+            margin: 50px auto; /* Vähän väliä kuvan ja formin väliin */
+        }
+        #schedule {
             flex: 1; /* Form täyttää 50% leveydestä */
             padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 20px 20px 40px 20px; /* Vähän väliä kuvan ja formin väliin */
+            margin: 30px 20px; 
         }
 
         .image-container img {
@@ -55,6 +36,9 @@
             height: auto; /* Säilytetään kuvasuhde */
             max-height: 300px; /* Maksimikorkeus kuvalle */
         }
+
+        
+
         footer {
             background-color: rgba(167, 188, 91, 0.8); /* Vaaleanvihreä väri 80% peittävyydellä */
             padding: 20px;
@@ -66,9 +50,11 @@
         }
         table {
             border-collapse: collapse;
-            width: 100%;
-            max-width: 300px;
-            margin-top: 20px;
+            width: 35%;
+           
+            margin: 20px auto;
+            background-color: #fff;
+            
         }
         th, td {
             border: 1px solid #ddd;
@@ -98,7 +84,7 @@
         #recycle-section {
             margin: 40px auto; /* Keskittää elementin sivun keskelle */
             padding: 20px;
-            background-color: #e9f7ef;
+            background-color: rgba(211, 211, 211, 0.8);
             border-radius: 8px;
             max-width: 1200px; /* Maksimileveys, joka ei ylitä näytön leveyttä */
             width: 90%; /* Täyttää 90% näytöstä, mutta pysyy keskitettynä */
@@ -127,10 +113,10 @@
         <p>Recycling is an essential practice to reduce waste and help the environment. It starts with sorting your trash into different categories such as paper, plastic, glass, and organic waste. Most cities provide designated bins for each type of waste, making it easy to dispose of your trash responsibly. Ensuring that each material is placed in the correct bin helps with the efficient processing of recyclables.</p>
         <p>Be mindful of special disposal requirements for hazardous materials like batteries or electronics, as these items should not be placed in regular recycling bins. Instead, look for local drop-off points or special collection services. By recycling properly, you can contribute to reducing the overall waste in landfills and support sustainable waste management practices.</p>
     </div>
-    <div class="container" id="schedule">
-        <h2>Trash Collection Schedule</h2>
+    <div class="container">
+        
         <div class="form-and-image-container">
-            <div class="container" id="schedule">
+            <div id="schedule">
                 <h2>Trash Collection Schedule</h2>
             
                 <form id="cityForm">
